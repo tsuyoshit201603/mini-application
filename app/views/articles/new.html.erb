@@ -1,5 +1,16 @@
+<%= form_for (@article) do |f|%>
+  <%# 記事入力フォーム %>
+  <div class="row">
+    <%= f.text_field :text, id: "textarea1", class: "materialize-textarea"%>
+    <%= f.label "Text", for: "textarea1" %>
+  </div>
+
+  <%# 投稿ボタン %>
+  <%= f.submit "作成する", class: "waves-effect waves-light btn" %>
+<% end %>
+
 <%# 記事入力フォーム %>
-<div class="row">
+<%# <div class="row">
     <form class="col s12">
       <div class="row">
         <div class="input-field col s12">
@@ -8,7 +19,7 @@
         </div>
       </div>
     </form>
-  </div>
+  </div> %>
 
 <%# 投稿ボタン %>
-  <a class="waves-effect waves-light btn">作成する</a>
+  <%# <a class="waves-effect waves-light btn">作成する</a> %>

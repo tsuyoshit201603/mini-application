@@ -4,5 +4,17 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @article = Article.new
+  end
+
+  def create
+    # binding pry
+    Article.create(create_params)
+    redirect_to action: 'index'
+  end
+
+  private
+  def create_params
+    params.require(:article).permit(:text)
   end
 end

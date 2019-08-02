@@ -8,13 +8,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    # binding pry
     Article.create(create_params)
     redirect_to action: 'index'
   end
 
   private
   def create_params
-    params.require(:article).permit(:text)
+    params.require(:article).permit(:text).merge(user_id: current_user.id)
   end
 end

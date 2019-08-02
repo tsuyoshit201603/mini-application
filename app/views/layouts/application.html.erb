@@ -7,9 +7,32 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
   </head>
 
   <body>
+<%# header %>
+<nav class="blue darken-1">
+    <div class="nav-wrapper">
+      <%= link_to 'ミニアプリ', '/articles', class: "brand-logo" %>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= link_to '作成', '/articles/new' %></li>
+        <li><%= link_to 'サインイン', '/users/sign_in' %></li>
+        <li><%= link_to 'サインアウト', 'users/sign_out'%></li>
+      </ul>
+    </div>
+  </nav>
+
     <%= yield %>
   </body>
 </html>

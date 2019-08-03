@@ -21,27 +21,20 @@
   </head>
 
   <body>
-<% if user_signed_in? %>
-<nav class="blue darken-1">
+  <nav class="blue darken-1">
     <div class="nav-wrapper">
       <%= link_to 'ミニアプリ', '/articles', class: "brand-logo" %>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><%= link_to '作成', '/articles/new' %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to '作成', '/articles/new', method: :get %></li>
         <li><%= link_to 'サインアウト', 'users/sign_out', method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'サインイン', '/users/sign_in', method: :get %></li>
+      <% end %>
       </ul>
     </div>
   </nav>
-<% else %>
-<nav class="blue darken-1">
-    <div class="nav-wrapper">
-      <%= link_to 'ミニアプリ', '/articles', class: "brand-logo" %>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><%= link_to 'サインイン', '/users/sign_in' %></li>
-      </ul>
-    </div>
-  </nav>
-<% end %>
 
-    <%= yield %>
+  <%= yield %>
   </body>
 </html>

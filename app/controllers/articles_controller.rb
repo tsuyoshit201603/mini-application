@@ -8,16 +8,14 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    Article.create(create_params)
+    Article.create(article_params)
     redirect_to action: 'index'
   end
 
   def destroy
     article = Article.find(params[:id])
-    if article.user_id == current_user.id
-      article.destroy
-      redirect_to action: 'index'
-    end
+    article.destroy if article.user_id == current_user.id
+    redirect_to action: 'index'
   end
 
   def edit
@@ -26,14 +24,13 @@ class ArticlesController < ApplicationController
 
   def update
     article = Article.find(params[:id])
-    if article.user_id == current_user.id
-      article.update(create_params)
-      redirect_to action: 'index'
-    end
+    article.update(article_params) if article.user_id == current_user.id
+    redirect_to action: 'index'
   end
 
   private
-  def create_params
+  
+  def article_params
     params.require(:article).permit(:text).merge(user_id: current_user.id)
   end
 end

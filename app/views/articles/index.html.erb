@@ -23,10 +23,12 @@
             <div class="card-content black-text">
               <%= article.text %>
             </div>
+            <% if user_signed_in? && current_user.id == article.user_id %>
             <div class="card-action">
-              <a href="#">編集</a>
-              <a href="#">削除</a>
+              <%= link_to '編集', "/articles/#{article.id}/edit", method: :get %>
+              <%= link_to '削除', "/articles/#{article.id}", method: :delete %>
             </div>
+            <% end %>
           </div>
         </div>
       </div>

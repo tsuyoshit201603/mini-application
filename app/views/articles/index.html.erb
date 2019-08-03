@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ミニアプリ</title>
-   <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-  <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-
 </head>
 <body>
   <% @articles.each do |article| %>
@@ -20,7 +8,7 @@
         <div class="col s12 m6 offset-m3">
           <div class="card white">
             <div class="card-content black-text">
-              <%= article.text %>
+              <%= simple_format(article.text) %>
             </div>
             <% if user_signed_in? && current_user.id == article.user_id %>
             <div class="card-action">
